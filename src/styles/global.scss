@@ -1,0 +1,18 @@
+@font-face {
+   font-family: 'Public Sans';
+   src: url(../assets/PublicSans-VariableFont_wght.ttf);
+}
+
+* {
+   margin: 0;
+   padding: 0;
+   font-family: 'Public Sans', 'Gill Sans', 'Gill Sans MT', Calibri,
+      'Trebuchet MS', sans-serif;
+   box-sizing: border-box;
+   font-size: 1em;
+}
+
+body,
+html {
+   scroll-behavior: smooth;
+}
