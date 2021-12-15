@@ -1,0 +1,27 @@
+div.ctx {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   max-width: 18rem;
+   margin: 0.5rem;
+
+   button {
+      width: 6rem;
+      height: 2rem;
+      letter-spacing: 0.2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #643173;
+      color: #fffcf2;
+      box-shadow: 0 0 0.6rem #ccc5b9;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+         background-color: #eb5e28;
+         color: #fffcf2;
+         box-shadow: 0 0 0.6rem #403d39;
+      }
+   }
+}
