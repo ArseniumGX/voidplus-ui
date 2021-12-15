@@ -1,0 +1,28 @@
+div.ctx {
+   display: flex;
+   flex-direction: column;
+   max-width: 18rem;
+   padding: 0.2rem;
+   margin-bottom: 0.2rem;
+
+   label {
+      letter-spacing: 0.2rem;
+      text-align: justify;
+   }
+
+   input {
+      border: solid 1px #ccc5b9;
+      height: 2rem;
+      padding: 0.2rem;
+      border-radius: 8px;
+      background-color: #fffcf2;
+      box-shadow: 0 0 0.2rem #ccc5b9;
+      outline: none;
+      transition: 0.3s ease-in-out;
+
+      &:focus {
+         border: solid 1px #643173;
+         box-shadow: 0 0 0.2rem #403d39;
+      }
+   }
+}
