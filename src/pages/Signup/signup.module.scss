@@ -1,0 +1,13 @@
+div.ctx {
+   display: flex;
+   flex-direction: column;
+   width: 100vw;
+   height: 80vh;
+   align-items: center;
+   justify-content: space-evenly;
+
+   h2 {
+      font-size: 2em;
+      letter-spacing: 0.2rem;
+   }
+}
