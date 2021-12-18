@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Input, Button } from '../../components'
 import style from './signup.module.scss'
+import { Api } from '../../services/api'
 
 function Signup() {
    const [user, setUser] = useState({})
@@ -11,10 +12,12 @@ function Signup() {
       setUser(aux)
    }
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault()
 
-      alert(JSON.stringify(user))
+      await Api.create('user', user)
+
+      setUser({})
    }
 
    return (
@@ -52,8 +55,8 @@ function Signup() {
                id="repasswd"
                title={'Confirmação de senha'}
                type={'password'}
-               name={'repasswd'}
-               value={user.repasswd || ''}
+               name={'rePassword'}
+               value={user.rePassword || ''}
                onChange={handleFields}
                required={true}
             />
