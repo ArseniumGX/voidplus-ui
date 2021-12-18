@@ -3,9 +3,13 @@ import marca from '../../assets/marca.png'
 
 function Footer() {
    return (
-      <footer>
-         <img src={marca} alt="ArseniumGX's markup" />
-         <div className={style.socials}>
+      <footer className={style.footer}>
+         <img
+            className={style.footer__marca}
+            src={marca}
+            alt="ArseniumGX's markup"
+         />
+         <div className={style.footer__socials}>
             <ul>
                <li>
                   <a
@@ -65,9 +69,13 @@ function Footer() {
             </ul>
          </div>
 
-         <div className={style.copy}>
-            <p>Created by José Pereira Macedo</p>
-            <p>ArseniumGX &copy; 2021</p>
+         <div className={style.footer__copy}>
+            <span className={style.footer__copy__text}>
+               Created by José Pereira Macedo
+            </span>
+            <span className={style.footer__copy__text}>
+               ArseniumGX &copy; 2021
+            </span>
          </div>
       </footer>
    )
