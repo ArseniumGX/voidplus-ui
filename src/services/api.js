@@ -1,11 +1,11 @@
 const Api = {
     
-    url: 'http://localhost:3001',
+    url: 'http://voidplus-api.herokuapp.com',
 
-    create: function(src, body){
+    create: function(src, content){
         return fetch(`${this.url}/${src}`, {
             method: "POST",
-            body,
+            body: JSON.stringify(content),
             headers: {
                 "content-type": "application/json"
             }
@@ -24,10 +24,10 @@ const Api = {
         })
     },
 
-    update: function(src, id, body){
+    update: function(src, id, content){
         return fetch(`${this.url}/${src}/${id}`, {
             method: "PATCH",
-            body,
+            body: JSON.stringify(content),
             headers: {
                 "content-type": "application/json"
             }
@@ -42,4 +42,4 @@ const Api = {
 
 }
 
-console.log(Api.test())
+export { Api }
