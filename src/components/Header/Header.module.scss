@@ -1,0 +1,20 @@
+.header {
+   height: 20vh;
+   background: linear-gradient(to bottom, #252422 0%, #403d39 100%);
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   &__logo {
+      // display: flex;
+      padding: 2rem;
+      img {
+         height: 6rem;
+      }
+      h1 {
+         letter-spacing: 0.2rem;
+         color: #fffcf2;
+         text-align: center;
+      }
+   }
+}
