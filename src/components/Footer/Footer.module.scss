@@ -3,7 +3,8 @@
    flex-direction: column;
    align-items: center;
    justify-content: space-between;
-   background-color: #0d0d0d;
+   // background-color: #0d0d0d;
+   background: linear-gradient(to bottom, #403d39 0%, #0d0d0d 100%);
    height: 20vh;
 
    &__marca {
