@@ -2,17 +2,24 @@ import { useEffect, useState } from 'react'
 import { Api } from '../../services/api'
 import { Load } from '../../components'
 import style from './Movie.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 function Movie(props) {
    const [movie, setMovie] = useState({})
    const [load, setLoad] = useState(false)
+   const navigate = useNavigate()
 
    const getMovie = async () => {
       const id = localStorage.getItem('id-movie')
       const request = await Api.readOne('movie', id)
       const data = await request.json()
+
+      data.statusCode === 401 && navigate('/login')
+
       setMovie(data)
       setLoad(true)
+
+      return
    }
 
    useEffect(() => {
