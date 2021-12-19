@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Input, Button } from '../../components'
-import style from './signup.module.scss'
+import style from './Signup.module.scss'
 import { Api } from '../../services/api'
+import { useNavigate } from 'react-router-dom'
 
 function Signup() {
    const [user, setUser] = useState({})
+   const navigate = useNavigate()
 
    const handleFields = (e) => {
       const aux = { ...user }
@@ -15,13 +17,21 @@ function Signup() {
    const handleSubmit = async (e) => {
       e.preventDefault()
 
-      await Api.create('user', user)
+      const request = await Api.create('user', user)
 
-      setUser({})
+      return request.status === 201
+         ? navigate('/login')
+         : request.status === 400
+         ? window.alert('Senha deve ter no mínimo 7 caracteres.')
+         : request.status === 406
+         ? window.alert('Senhas não conferem!')
+         : request.status === 409
+         ? window.alert('Email já cadastrado!')
+         : true
    }
 
    return (
-      <div className={style.ctx}>
+      <section className={style.signup}>
          <h2>Cadastro de Usuário</h2>
          <form onSubmit={handleSubmit}>
             <Input
@@ -62,7 +72,7 @@ function Signup() {
             />
             <Button value={'Criar'} />
          </form>
-      </div>
+      </section>
    )
 }
 

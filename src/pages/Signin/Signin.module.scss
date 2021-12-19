@@ -1,0 +1,31 @@
+.login {
+   padding: 4rem;
+   display: flex;
+   flex-direction: column;
+   height: 60vh;
+   align-items: center;
+
+   h2 {
+      letter-spacing: 0.2rem;
+      font-size: 1.5em;
+   }
+   form {
+      border-top: 0.1rem solid #643173;
+      border-bottom: 0.1rem solid #643173;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+
+      a {
+         text-decoration: none;
+         color: #643173;
+         text-shadow: 0 0 0.1rem #403d39;
+         transition: 0.3s ease-in-out;
+
+         &:hover {
+            color: #eb5e28;
+            text-shadow: 0 1rem 0.2rem #643173;
+         }
+      }
+   }
+}

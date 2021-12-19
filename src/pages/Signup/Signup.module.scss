@@ -1,13 +1,12 @@
-div.ctx {
+.signup {
    display: flex;
    flex-direction: column;
-   width: 100vw;
-   height: 80vh;
+   height: 60vh;
    align-items: center;
    justify-content: space-evenly;
 
    h2 {
-      font-size: 2em;
+      font-size: 1.5em;
       letter-spacing: 0.2rem;
    }
 }
