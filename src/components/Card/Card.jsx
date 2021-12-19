@@ -5,7 +5,8 @@ function Card(props) {
    const navigate = useNavigate()
 
    const goToMovie = () => {
-      return navigate('/movie', { state: props.id })
+      localStorage.setItem('id-movie', props.id)
+      return navigate(`/movie`, { state: props.id })
    }
 
    return (
