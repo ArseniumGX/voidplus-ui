@@ -1,4 +1,4 @@
-div.card {
+.card {
    display: flex;
    flex-direction: column;
    justify-content: space-between;
@@ -12,7 +12,7 @@ div.card {
    border-radius: 8px;
    margin: 0.3rem;
 
-   span {
+   &__text {
       text-align: center;
       font-weight: 700;
       padding: 0.3rem 0;
@@ -20,7 +20,7 @@ div.card {
       font-size: 1em;
    }
 
-   img {
+   &__image {
       height: 18rem;
    }
 
