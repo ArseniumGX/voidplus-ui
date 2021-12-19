@@ -17,8 +17,7 @@ function Movie(props) {
 
    useEffect(() => {
       getMovie()
-      // localStorage.removeItem('id-movie')
-      console.log(movie)
+      localStorage.removeItem('id-movie')
    }, [])
 
    return load ? (
@@ -72,6 +71,7 @@ function Movie(props) {
 
          <iframe
             src={movie.trailer.replace('watch?v=', 'embed/') || ''}
+            title={`${movie.title} trailler`}
          ></iframe>
       </section>
    ) : (
