@@ -1,0 +1,29 @@
+.notFound {
+   padding: 2rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+   background: linear-gradient(to left, #ccc5b9 0%, #fffcf2 100%);
+   height: 90vh;
+
+   p {
+      color: #293132;
+      font-size: 2rem;
+      text-align: center;
+      margin: 1rem;
+      letter-spacing: 0.3rem;
+   }
+
+   span {
+      color: #293132;
+      width: 32rem;
+      letter-spacing: 0.1rem;
+      text-align: justify;
+   }
+
+   img {
+      width: 30rem;
+      margin: 1rem;
+   }
+}
