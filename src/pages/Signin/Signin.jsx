@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import style from './Signin.module.scss'
 import { Button, Input } from '../../components'
 import { useState } from 'react'
+import { Api } from '../../services/api'
 
 function Signin() {
    const [login, setLogin] = useState({})
@@ -14,7 +15,10 @@ function Signin() {
 
    const sendLogin = async (e) => {
       e.preventDefault()
-      console.log(login)
+
+      const request = await Api.create('auth/login', login)
+      const { token } = await request.json()
+      localStorage.setItem('token', token)
 
       setLogin({})
    }
