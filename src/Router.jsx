@@ -10,10 +10,7 @@ function Router() {
                <Route index element={<Signin />} />
                <Route path="cadastrar" element={<Signup />} />
             </Route>
-            <Route path="movie">
-               <Route index element={false} />
-               <Route path=":id" element={<Movie />} />
-            </Route>
+            <Route path="movie" element={<Movie />} />
             <Route path="" element={<About />} />
             <Route path="*" element={<NotFound />} />
          </Routes>
