@@ -1,14 +1,21 @@
 import { Route, Routes } from 'react-router-dom'
-import { Signup, Home, Movie } from './pages'
+import { Signup, Home, Movie, Signin, NotFound, About } from './pages'
 
 function Router() {
    return (
       <>
          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Home />} />
-            <Route path="/movie" element={<Movie />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route index element={<Home />} />
+            <Route path="login/">
+               <Route index element={<Signin />} />
+               <Route path="cadastrar" element={<Signup />} />
+            </Route>
+            <Route path="movie">
+               <Route index element={false} />
+               <Route path=":id" element={<Movie />} />
+            </Route>
+            <Route path="" element={<About />} />
+            <Route path="*" element={<NotFound />} />
          </Routes>
       </>
    )
