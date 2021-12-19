@@ -2,8 +2,8 @@ import style from './About.module.scss'
 
 function About() {
    return (
-      <section>
-         <p>Página sobre</p>
+      <section className={style.about}>
+         <h2>Sobre</h2>
       </section>
    )
 }

@@ -1,16 +1,14 @@
 import style from './Home.module.scss'
 import { Card, Load } from '../../components'
-import { Api } from '../../services/api'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 function Home() {
    const [movies, setMovies] = useState([])
    const [load, setLoad] = useState(false)
 
    const loadMovies = async () => {
-      const response = await Api.readAll('movie')
-      const data = await response.json()
-      setMovies(data)
+      await axios.get('movie').then((res) => setMovies(res.data))
       setLoad(true)
       return
    }

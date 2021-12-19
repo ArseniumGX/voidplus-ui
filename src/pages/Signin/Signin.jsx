@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom'
 import style from './Signin.module.scss'
 import { Button, Input } from '../../components'
 import { useState } from 'react'
-import { Api } from '../../services/api'
+import axios from 'axios'
+
+// import { Api } from '../../services/api'
 
 function Signin() {
    const [login, setLogin] = useState({})
@@ -16,11 +18,15 @@ function Signin() {
    const sendLogin = async (e) => {
       e.preventDefault()
 
-      const request = await Api.create('auth/login', login)
-      const { token } = await request.json()
-      localStorage.setItem('token', token)
+      await axios
+         .post('auth/login', login)
+         .then((res) => localStorage.setItem('token', res.data.token))
 
-      setLogin({})
+      // const request = await Api.create('auth/login', login)
+      // const { token } = await request.json()
+      // localStorage.setItem('token', token)
+
+      // setLogin({})
    }
 
    return (

@@ -11,7 +11,7 @@ function Router() {
                <Route path="cadastrar" element={<Signup />} />
             </Route>
             <Route path="movie" element={<Movie />} />
-            <Route path="" element={<About />} />
+            <Route path="/sobre" element={<About />} />
             <Route path="*" element={<NotFound />} />
          </Routes>
       </>

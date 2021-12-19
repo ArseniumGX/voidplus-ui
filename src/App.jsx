@@ -1,3 +1,4 @@
+import './config/axios'
 import './styles/global.scss'
 import { Router } from './Router'
 import { Header, Footer } from './components'

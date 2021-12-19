@@ -1,22 +1,18 @@
 import { useEffect, useState } from 'react'
-import { Api } from '../../services/api'
+import axios from 'axios'
 import { Load } from '../../components'
 import style from './Movie.module.scss'
-import { useNavigate } from 'react-router-dom'
 
 function Movie(props) {
    const [movie, setMovie] = useState({})
    const [load, setLoad] = useState(false)
-   const navigate = useNavigate()
 
    const getMovie = async () => {
       const id = localStorage.getItem('id-movie')
-      const request = await Api.readOne('movie', id)
-      const data = await request.json()
-
-      data.statusCode === 401 && navigate('/login')
-
-      setMovie(data)
+      const response = await axios
+         .get(`movie/${id}`)
+         .then((res) => setMovie(res.data))
+      console.log(response)
       setLoad(true)
 
       return
@@ -33,15 +29,15 @@ function Movie(props) {
          <img src={movie.poster || ''} alt={`${movie.title || ''} poster`} />
          <span>
             <strong>Ano: </strong>
-            {movie.year}
+            {movie.year || ''}
          </span>
          <span>
             <strong>Duração: </strong>
-            {movie.duration1}
+            {movie.duration || ''}
          </span>
          <span>
             <strong>Nota IMDB: </strong>
-            {movie.rating} / 10
+            {movie.rating || 0} / 10
          </span>
 
          <p>
