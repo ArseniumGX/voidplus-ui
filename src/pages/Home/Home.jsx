@@ -12,6 +12,7 @@ function Home() {
       const data = await response.json()
       setMovies(data)
       setLoad(true)
+      return
    }
 
    useEffect(() => {

@@ -1,6 +1,6 @@
 const Api = {
     
-    url: 'http://voidplus-api.herokuapp.com',
+    url: 'https://voidplus-api.herokuapp.com',
 
     create: function(src, content){
         return fetch(`${this.url}/${src}`, {
