@@ -1,9 +1,9 @@
-import styles from './input.module.scss'
+import style from './Input.module.scss'
 
 function Input(props) {
    return (
       <>
-         <div className={styles.ctx}>
+         <div className={style.container}>
             <label htmlFor={props.id}>{props.title}</label>
             <input
                id={props.id}
