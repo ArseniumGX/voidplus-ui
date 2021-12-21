@@ -1,7 +1,7 @@
-import style from './Home.module.scss'
-import { Card, Load } from '../../components'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import style from './Home.module.scss'
+import { Card, Load } from '../../components'
 
 function Home() {
    const [movies, setMovies] = useState([])
@@ -10,7 +10,6 @@ function Home() {
    const loadMovies = async () => {
       await axios.get('movie').then((res) => setMovies(res.data))
       setLoad(true)
-      return
    }
 
    useEffect(() => {

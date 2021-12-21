@@ -11,11 +11,11 @@ function Card(props) {
 
    return (
       <div className={style.card} onClick={goToMovie}>
-         <span className={style.card__text}>{props.title}</span>
+         <span className={style.card__text}>{props.title || ''}</span>
          <img
             className={style.card__image}
-            src={props.poster}
-            alt={`Filme $${props.title}`}
+            src={props.poster || ''}
+            alt={`Filme $${props.title}` || ''}
          />
       </div>
    )

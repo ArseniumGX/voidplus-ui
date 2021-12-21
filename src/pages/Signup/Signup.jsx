@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Input, Button } from '../../components'
-import style from './Signup.module.scss'
-import { Api } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import style from './Signup.module.scss'
+import { Input, Button } from '../../components'
 
 function Signup() {
    const [user, setUser] = useState({})
@@ -17,15 +17,19 @@ function Signup() {
    const handleSubmit = async (e) => {
       e.preventDefault()
 
-      const request = await Api.create('user', user)
+      const call = await axios
+         .post('user', user)
+         .then((res) => res)
+         .catch((err) => err.toJSON().status)
 
-      return request.status === 201
+      console.log(call)
+      return call.data
          ? navigate('/login')
-         : request.status === 400
+         : call === 400
          ? window.alert('Senha deve ter no mínimo 7 caracteres.')
-         : request.status === 406
+         : call === 406
          ? window.alert('Senhas não conferem!')
-         : request.status === 409
+         : call === 409
          ? window.alert('Email já cadastrado!')
          : true
    }
@@ -36,36 +40,45 @@ function Signup() {
          <form onSubmit={handleSubmit}>
             <Input
                id="nome"
-               title={'Nome'}
-               type={'text'}
-               name={'name'}
+               title="Nome"
+               type="text"
+               name="name"
                value={user.name || ''}
                onChange={handleFields}
                required={false}
             />
             <Input
+               id="avatar"
+               title="Avatar"
+               type="text"
+               name="avatar"
+               value={user.avatar || ''}
+               onChange={handleFields}
+               required={false}
+            />
+            <Input
                id="email"
-               title={'Email'}
-               type={'email'}
-               name={'email'}
+               title="Email"
+               type="email"
+               name="email"
                value={user.email || ''}
                onChange={handleFields}
                required={true}
             />
             <Input
                id="password"
-               title={'Senha'}
-               type={'password'}
-               name={'password'}
+               title="Senha"
+               type="password"
+               name="password"
                value={user.password || ''}
                onChange={handleFields}
                required={true}
             />
             <Input
                id="repasswd"
-               title={'Confirmação de senha'}
-               type={'password'}
-               name={'rePassword'}
+               title="Confirmação de senha"
+               type="password"
+               name="rePassword"
                value={user.rePassword || ''}
                onChange={handleFields}
                required={true}

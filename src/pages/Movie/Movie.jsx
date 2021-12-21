@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Load } from '../../components'
 import style from './Movie.module.scss'
+import { Load } from '../../components'
 
 function Movie(props) {
    const [movie, setMovie] = useState({})
@@ -14,8 +14,6 @@ function Movie(props) {
          .then((res) => setMovie(res.data))
       console.log(response)
       setLoad(true)
-
-      return
    }
 
    useEffect(() => {

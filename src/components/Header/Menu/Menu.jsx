@@ -10,7 +10,7 @@ function Menu() {
                   <Link to="/">Home</Link>
                </li>
                <li>
-                  <Link to="login">Login</Link>
+                  <Link to="profile">Perfil</Link>
                </li>
                <li>
                   <Link to="sobre">Sobre</Link>

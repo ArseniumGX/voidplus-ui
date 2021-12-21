@@ -1,13 +1,12 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import style from './Signin.module.scss'
 import { Button, Input } from '../../components'
-import { useState } from 'react'
-import axios from 'axios'
-
-// import { Api } from '../../services/api'
 
 function Signin() {
    const [login, setLogin] = useState({})
+   const navigate = useNavigate()
 
    const handleFields = (e) => {
       const aux = { ...login }
@@ -18,15 +17,26 @@ function Signin() {
    const sendLogin = async (e) => {
       e.preventDefault()
 
-      await axios
+      const call = await axios
          .post('auth/login', login)
-         .then((res) => localStorage.setItem('token', res.data.token))
+         .then((res) => res)
+         .catch((error) => error.toJSON().status)
 
-      // const request = await Api.create('auth/login', login)
-      // const { token } = await request.json()
-      // localStorage.setItem('token', token)
-
-      // setLogin({})
+      if (call.data) {
+         localStorage.setItem('token', call.data.token)
+         navigate('/')
+      } else if (call === 401) {
+         window.alert('Senha inválida!')
+         setLogin({ ...login, password: '' })
+      } else if (call === 404) {
+         window.alert('Usuário não cadastrado!')
+         setLogin({})
+      } else {
+         window.alert(
+            'Ocorreu algum problem.\nEntre em contato relatando o ocorrido.'
+         )
+         setLogin({})
+      }
    }
 
    return (
