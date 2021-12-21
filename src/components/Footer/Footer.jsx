@@ -1,10 +1,14 @@
 import style from './Footer.module.scss'
 import marca from '../../assets/marca.png'
+import { useNavigate } from 'react-router-dom'
 
 function Footer() {
+   const navigate = useNavigate()
+
    return (
       <footer className={style.footer}>
          <img
+            onClick={() => navigate('test')}
             className={style.footer__marca}
             src={marca}
             alt="ArseniumGX's markup"
