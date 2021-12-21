@@ -1,5 +1,14 @@
 import { Route, Routes } from 'react-router-dom'
-import { Signup, Home, Movie, Signin, NotFound, About, Proto } from './pages'
+import {
+   Signup,
+   Home,
+   Movie,
+   Signin,
+   NotFound,
+   About,
+   Profile,
+   Proto
+} from './pages'
 
 function Router() {
    return (
@@ -10,6 +19,7 @@ function Router() {
                <Route index element={<Signin />} />
                <Route path="cadastrar" element={<Signup />} />
             </Route>
+            <Route path="profile" element={<Profile />} />
             <Route path="movie" element={<Movie />} />
             <Route path="sobre" element={<About />} />
             <Route path="test" element={<Proto />} />
