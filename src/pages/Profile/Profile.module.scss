@@ -21,17 +21,21 @@
 
       &__image {
          height: 16rem;
-         border: 0.5rem solid #252422;
+         border: 0.2rem solid #252422;
          border-radius: 50%;
-         padding: 0.5rem;
+         padding: 0.2rem;
 
          img {
-            height: 14rem;
+            height: 15.2rem;
             border-radius: 50%;
          }
       }
    }
 
    &__favorite {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: center;
    }
 }
