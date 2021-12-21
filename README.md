@@ -2,7 +2,8 @@
 
 ## Description
 
-VoidPlus Streaming web page code using ReactJS consumes an external api.
+VoidPlus Streaming web page code using ReactJS consumes an external api. For
+this project i used this [API](https://voidplus-api.herokuapp.com/api/).
 
 ## Technologies and requirements
 
