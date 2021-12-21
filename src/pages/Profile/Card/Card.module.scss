@@ -1,14 +1,19 @@
 .card {
    display: flex;
-   flex-flow: column;
+   flex-flow: column wrap;
    align-items: center;
-   justify-content: center;
+   height: 24rem;
+   width: 16rem;
+   justify-content: space-between;
    padding: 1rem;
    margin: 1rem;
+   cursor: pointer;
+   border: solid 1px black;
 
    h3 {
+      text-align: center;
       letter-spacing: 0.2rem;
-      font-family: 1.3em;
+      font-size: 0.8em;
       margin-bottom: 0.3rem;
    }
 

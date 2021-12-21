@@ -11,6 +11,7 @@ function Profile() {
    const [load, setLoad] = useState(false)
    const [user, setUser] = useState({})
    const [watched, setwatched] = useState([])
+   const [state, setState] = useState(false)
    const token = localStorage.getItem('token')
 
    const loadProfile = async () => {
@@ -24,6 +25,11 @@ function Profile() {
 
       !call.data && navigate('/login')
 
+      setUser(call.data)
+      setLoad(true)
+   }
+
+   const loadWatched = async () => {
       await axios('user/watched/list', {
          headers: {
             Authorization: `Bearer ${token}`
@@ -31,9 +37,6 @@ function Profile() {
       })
          .then((res) => setwatched(res.data.watched))
          .catch((erro) => erro)
-
-      setUser(call.data)
-      setLoad(true)
    }
 
    const logout = () => {
@@ -44,6 +47,10 @@ function Profile() {
    useEffect(() => {
       loadProfile()
    }, [])
+
+   useEffect(() => {
+      loadWatched()
+   }, [state])
 
    return load ? (
       <section className={style.profile}>
@@ -71,7 +78,9 @@ function Profile() {
                      key={index}
                      poster={item.poster}
                      year={item.year}
-                     id={item.item}
+                     id={item.id}
+                     state={state}
+                     setState={setState}
                   />
                ))}
          </div>

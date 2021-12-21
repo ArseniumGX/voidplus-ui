@@ -1,30 +1,57 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { IoAddCircleOutline } from 'react-icons/io5'
 import style from './Movie.module.scss'
 import { Load } from '../../components'
 
 function Movie(props) {
    const [movie, setMovie] = useState({})
    const [load, setLoad] = useState(false)
+   const [logged, setLogged] = useState(false)
+
+   const isLogged = async () => {
+      const response = await axios
+         .get('auth/is-logged', {
+            headers: {
+               Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+         })
+         .then((res) => setLogged(true))
+         .catch((err) => setLogged(false))
+
+      return response
+   }
+
+   const markWatched = async () => {
+      await axios.patch(
+         `user/watched/${localStorage.getItem('id-movie')}`,
+         null,
+         {
+            headers: {
+               Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+         }
+      )
+   }
 
    const getMovie = async () => {
       const id = localStorage.getItem('id-movie')
-      const response = await axios
-         .get(`movie/${id}`)
-         .then((res) => setMovie(res.data))
-      console.log(response)
+      await axios.get(`movie/${id}`).then((res) => setMovie(res.data))
       setLoad(true)
    }
 
    useEffect(() => {
       getMovie()
-      localStorage.removeItem('id-movie')
+      isLogged()
    }, [])
 
    return load ? (
       <section className={style.movie}>
          <h2>{movie.title || ''}</h2>
          <img src={movie.poster || ''} alt={`${movie.title || ''} poster`} />
+
+         {logged && <IoAddCircleOutline onClick={markWatched} />}
+
          <span>
             <strong>Ano: </strong>
             {movie.year || ''}
