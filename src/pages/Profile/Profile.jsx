@@ -11,10 +11,9 @@ function Profile() {
    const [load, setLoad] = useState(false)
    const [user, setUser] = useState({})
    const [watched, setwatched] = useState([])
+   const token = localStorage.getItem('token')
 
    const loadProfile = async () => {
-      const token = localStorage.getItem('token')
-
       const call = await axios('auth/profile', {
          headers: {
             Authorization: `Bearer ${token}`
@@ -25,12 +24,6 @@ function Profile() {
 
       !call.data && navigate('/login')
 
-      setUser(call.data)
-   }
-
-   const loadFavorites = async () => {
-      const token = localStorage.getItem('token')
-
       await axios('user/watched/list', {
          headers: {
             Authorization: `Bearer ${token}`
@@ -39,6 +32,7 @@ function Profile() {
          .then((res) => setwatched(res.data.watched))
          .catch((erro) => erro)
 
+      setUser(call.data)
       setLoad(true)
    }
 
@@ -49,7 +43,6 @@ function Profile() {
 
    useEffect(() => {
       loadProfile()
-      loadFavorites()
    }, [])
 
    return load ? (

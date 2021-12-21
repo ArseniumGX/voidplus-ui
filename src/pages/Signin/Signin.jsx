@@ -24,7 +24,7 @@ function Signin() {
 
       if (call.data) {
          localStorage.setItem('token', call.data.token)
-         navigate('/')
+         navigate('/profile')
       } else if (call === 401) {
          window.alert('Senha inválida!')
          setLogin({ ...login, password: '' })
